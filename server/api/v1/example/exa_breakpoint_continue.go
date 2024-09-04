@@ -6,12 +6,12 @@ import (
 	"mime/multipart"
 	"strconv"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
+	"github.com/Grace1China/cointown/server/model/example"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	exampleRes "github.com/flipped-aurora/gin-vue-admin/server/model/example/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/common/response"
+	exampleRes "github.com/Grace1China/cointown/server/model/example/response"
+	"github.com/Grace1China/cointown/server/utils"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -84,7 +84,7 @@ func (b *FileUploadAndDownloadApi) BreakpointContinue(c *gin.Context) {
 // @Produce   application/json
 // @Param     file  formData  file                                                        true  "Find the file, 查找文件"
 // @Success   200   {object}  response.Response{data=exampleRes.FileResponse,msg=string}  "查找文件,返回包括文件详情"
-// @Router    /fileUploadAndDownload/findFile [get]
+// @Router    /fileUploadAndDownload/findFile [post]
 func (b *FileUploadAndDownloadApi) FindFile(c *gin.Context) {
 	fileMd5 := c.Query("fileMd5")
 	fileName := c.Query("fileName")

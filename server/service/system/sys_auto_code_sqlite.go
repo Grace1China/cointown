@@ -2,10 +2,11 @@ package system
 
 import (
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
 	"path/filepath"
 	"strings"
+
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/system/response"
 )
 
 var AutoCodeSqlite = new(autoCodeSqlite)

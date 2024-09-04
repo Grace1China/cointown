@@ -2,10 +2,11 @@ package system
 
 import (
 	"context"
-	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
 	"reflect"
 	"testing"
+
+	model "github.com/Grace1China/cointown/server/model/system"
+	"github.com/Grace1China/cointown/server/model/system/request"
 )
 
 func Test_autoCodePackage_Create(t *testing.T) {

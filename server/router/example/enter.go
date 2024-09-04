@@ -1,7 +1,7 @@
 package example
 
 import (
-	api "github.com/flipped-aurora/gin-vue-admin/server/api/v1"
+	api "github.com/Grace1China/cointown/server/api/v1"
 )
 
 type RouterGroup struct {

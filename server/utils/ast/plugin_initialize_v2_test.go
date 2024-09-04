@@ -1,9 +1,10 @@
 package ast
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"path/filepath"
 	"testing"
+
+	"github.com/Grace1China/cointown/server/global"
 )
 
 func TestPluginInitialize_Injection(t *testing.T) {
@@ -24,7 +25,7 @@ func TestPluginInitialize_Injection(t *testing.T) {
 				Type:       TypePluginInitializeV2,
 				Path:       filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "initialize", "plugin_biz_v2.go"),
 				PluginPath: filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "plugin.go"),
-				ImportPath: `"github.com/flipped-aurora/gin-vue-admin/server/plugin/gva"`,
+				ImportPath: `"github.com/Grace1China/cointown/server/plugin/gva"`,
 			},
 			wantErr: false,
 		},
@@ -71,7 +72,7 @@ func TestPluginInitialize_Rollback(t *testing.T) {
 				Type:       TypePluginInitializeV2,
 				Path:       filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "initialize", "plugin_biz_v2.go"),
 				PluginPath: filepath.Join(global.GVA_CONFIG.AutoCode.Root, global.GVA_CONFIG.AutoCode.Server, "plugin", "gva", "plugin.go"),
-				ImportPath: `"github.com/flipped-aurora/gin-vue-admin/server/plugin/gva"`,
+				ImportPath: `"github.com/Grace1China/cointown/server/plugin/gva"`,
 			},
 			wantErr: false,
 		},

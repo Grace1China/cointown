@@ -60,8 +60,6 @@ export const ReturnArrImg = (arr) => {
   return imgArr
 }
 
-export const returnArrImg = ReturnArrImg
-
 export const onDownloadFile = (url) => {
   window.open(path + url)
 }

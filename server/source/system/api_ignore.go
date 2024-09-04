@@ -2,8 +2,9 @@ package system
 
 import (
 	"context"
-	sysModel "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/service/system"
+
+	sysModel "github.com/Grace1China/cointown/server/model/system"
+	"github.com/Grace1China/cointown/server/service/system"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
@@ -54,8 +55,6 @@ func (i *initApiIgnore) InitializeData(ctx context.Context) (context.Context, er
 		{Method: "POST", Path: "/base/captcha"},
 		{Method: "POST", Path: "/init/initdb"},
 		{Method: "POST", Path: "/init/checkdb"},
-		{Method: "GET", Path: "/info/getInfoDataSource"},
-		{Method: "GET", Path: "/info/getInfoPublic"},
 	}
 	if err := db.Create(&entities).Error; err != nil {
 		return ctx, errors.Wrap(err, sysModel.SysIgnoreApi{}.TableName()+"表数据初始化失败!")

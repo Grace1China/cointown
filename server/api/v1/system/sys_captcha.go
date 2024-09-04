@@ -3,9 +3,9 @@ package system
 import (
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	systemRes "github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/common/response"
+	systemRes "github.com/Grace1China/cointown/server/model/system/response"
 	"github.com/gin-gonic/gin"
 	"github.com/mojocn/base64Captcha"
 	"go.uber.org/zap"

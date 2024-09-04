@@ -166,22 +166,3 @@ export const addFunc = (data) => {
     data
   })
 }
-
-export const initMenu = (data) => {
-  return service({
-    url: '/autoCode/initMenu',
-    method: 'post',
-    data
-  })
-}
-
-export const initAPI = (data) => {
-  return service({
-    url: '/autoCode/initAPI',
-    method: 'post',
-    data
-  })
-}
-
-
-

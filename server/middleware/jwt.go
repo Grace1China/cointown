@@ -2,14 +2,17 @@ package middleware
 
 import (
 	"errors"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
-	"github.com/golang-jwt/jwt/v4"
 	"strconv"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/service"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/system"
+	"github.com/Grace1China/cointown/server/utils"
+	"github.com/golang-jwt/jwt/v4"
+	"go.uber.org/zap"
+
+	"github.com/Grace1China/cointown/server/model/common/response"
+	"github.com/Grace1China/cointown/server/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -65,7 +68,13 @@ func JWTAuth() gin.HandlerFunc {
 			c.Header("new-expires-at", strconv.FormatInt(newClaims.ExpiresAt.Unix(), 10))
 			utils.SetToken(c, newToken, int(dr.Seconds()))
 			if global.GVA_CONFIG.System.UseMultipoint {
-				// 记录新的活跃jwt
+				RedisJwtToken, err := jwtService.GetRedisJWT(newClaims.Username)
+				if err != nil {
+					global.GVA_LOG.Error("get redis jwt failed", zap.Error(err))
+				} else { // 当之前的取成功时才进行拉黑操作
+					_ = jwtService.JsonInBlacklist(system.JwtBlacklist{Jwt: RedisJwtToken})
+				}
+				// 无论如何都要记录当前的活跃状态
 				_ = jwtService.SetRedisJWT(newToken, newClaims.Username)
 			}
 		}

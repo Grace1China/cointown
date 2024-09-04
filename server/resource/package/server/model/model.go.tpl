@@ -3,7 +3,7 @@ package {{.Package}}
 
 import (
 	{{- if .GvaModel }}
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"github.com/Grace1China/cointown/server/global"
 	{{- end }}
 	{{- if or .HasTimer }}
 	"time"

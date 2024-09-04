@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/config"
+	"github.com/Grace1China/cointown/server/config"
 	"github.com/gookit/color"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/Grace1China/cointown/server/utils"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/system/request"
 	"github.com/gofrs/uuid/v5"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -37,7 +37,6 @@ func (h MysqlInitHandler) WriteConfig(ctx context.Context) error {
 	for k, v := range cs {
 		global.GVA_VP.Set(k, v)
 	}
-	global.GVA_ACTIVE_DBNAME = &c.Dbname
 	return global.GVA_VP.WriteConfig()
 }
 

@@ -2,9 +2,10 @@ package initialize
 
 import (
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/email"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/plugin"
+
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/plugin/email"
+	"github.com/Grace1China/cointown/server/utils/plugin"
 	"github.com/gin-gonic/gin"
 )
 

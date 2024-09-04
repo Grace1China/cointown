@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/common/request"
+	"github.com/Grace1China/cointown/server/model/system"
+	"github.com/Grace1China/cointown/server/utils"
 	"github.com/gofrs/uuid/v5"
 	"gorm.io/gorm"
 )
@@ -152,7 +152,7 @@ func (userService *UserService) SetUserAuthority(id uint, authorityId uint) (err
 //@param: id uint, authorityIds []string
 //@return: err error
 
-func (userService *UserService) SetUserAuthorities(adminAuthorityID, id uint, authorityIds []uint) (err error) {
+func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint) (err error) {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		var user system.SysUser
 		TxErr := tx.Where("id = ?", id).First(&user).Error
@@ -166,10 +166,6 @@ func (userService *UserService) SetUserAuthorities(adminAuthorityID, id uint, au
 		}
 		var useAuthority []system.SysUserAuthority
 		for _, v := range authorityIds {
-			e := AuthorityServiceApp.CheckAuthorityIDAuth(adminAuthorityID, v)
-			if e != nil {
-				return e
-			}
 			useAuthority = append(useAuthority, system.SysUserAuthority{
 				SysUserId: id, SysAuthorityAuthorityId: v,
 			})

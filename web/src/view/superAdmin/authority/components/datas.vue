@@ -131,7 +131,6 @@ const authDataEnter = async() => {
 
 //   选择
 const selectAuthority = () => {
-  dataAuthorityId.value = dataAuthorityId.value.filter(item => item)
   emit('changeRow', 'dataAuthorityId', dataAuthorityId.value)
   needConfirm.value = true
 }

@@ -1,13 +1,14 @@
 package system
 
 import (
-	"github.com/goccy/go-json"
 	"io"
 	"strings"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/request"
+	"github.com/goccy/go-json"
+
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/common/response"
+	"github.com/Grace1China/cointown/server/utils/request"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -21,7 +22,7 @@ type AutoCodeApi struct{}
 // @accept    application/json
 // @Produce   application/json
 // @Success   200  {object}  response.Response{data=map[string]interface{},msg=string}  "获取当前所有数据库"
-// @Router    /autoCode/getDB [get]
+// @Router    /autoCode/getDatabase [get]
 func (autoApi *AutoCodeApi) GetDB(c *gin.Context) {
 	businessDB := c.Query("businessDB")
 	dbs, err := autoCodeService.Database(businessDB).GetDB(businessDB)

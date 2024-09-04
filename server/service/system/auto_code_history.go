@@ -4,19 +4,20 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/ast"
-	"github.com/pkg/errors"
 	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	common "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	request "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/Grace1China/cointown/server/utils/ast"
+	"github.com/pkg/errors"
+
+	"github.com/Grace1China/cointown/server/global"
+	common "github.com/Grace1China/cointown/server/model/common/request"
+	model "github.com/Grace1China/cointown/server/model/system"
+	request "github.com/Grace1China/cointown/server/model/system/request"
+	"github.com/Grace1China/cointown/server/utils"
 
 	"go.uber.org/zap"
 )
@@ -66,12 +67,6 @@ func (s *autoCodeHistory) RollBack(ctx context.Context, info request.SysAutoHist
 	err := global.GVA_DB.Where("id = ?", info.ID).First(&history).Error
 	if err != nil {
 		return err
-	}
-	if history.ExportTemplateID != 0 {
-		err = global.GVA_DB.Delete(&model.SysExportTemplate{}, "id = ?", history.ExportTemplateID).Error
-		if err != nil {
-			return err
-		}
 	}
 	if info.DeleteApi {
 		ids := info.ApiIds(history)

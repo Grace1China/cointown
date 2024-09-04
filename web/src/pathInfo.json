@@ -1,5 +1,11 @@
 {
   "/src/view/about/index.vue": "About",
+  "/src/view/coin/channel/channel.vue": "Channel",
+  "/src/view/coin/channel/channelForm.vue": "ChannelForm",
+  "/src/view/coin/coins/coins.vue": "Coins",
+  "/src/view/coin/coins/coinsForm.vue": "CoinsForm",
+  "/src/view/coin/rawMsg/rawMsg.vue": "RawMsg",
+  "/src/view/coin/rawMsg/rawMsgForm.vue": "RawMsgForm",
   "/src/view/error/index.vue": "Error",
   "/src/view/error/reload.vue": "Reload",
   "/src/view/example/breakpoint/breakpoint.vue": "BreakPoint",

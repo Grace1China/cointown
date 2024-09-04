@@ -3,15 +3,16 @@ package system
 import (
 	"context"
 	"errors"
-	"github.com/flipped-aurora/gin-vue-admin/server/config"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"path/filepath"
+
+	"github.com/Grace1China/cointown/server/config"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/system/request"
+	"github.com/Grace1China/cointown/server/utils"
 	"github.com/gofrs/uuid/v5"
 	"github.com/gookit/color"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
-	"path/filepath"
 )
 
 type MssqlInitHandler struct{}
@@ -33,7 +34,6 @@ func (h MssqlInitHandler) WriteConfig(ctx context.Context) error {
 	for k, v := range cs {
 		global.GVA_VP.Set(k, v)
 	}
-	global.GVA_ACTIVE_DBNAME = &c.Dbname
 	return global.GVA_VP.WriteConfig()
 }
 

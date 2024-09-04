@@ -1,13 +1,13 @@
 package system
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	systemRes "github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/common/request"
+	"github.com/Grace1China/cointown/server/model/common/response"
+	"github.com/Grace1China/cointown/server/model/system"
+	systemReq "github.com/Grace1China/cointown/server/model/system/request"
+	systemRes "github.com/Grace1China/cointown/server/model/system/response"
+	"github.com/Grace1China/cointown/server/utils"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -74,7 +74,7 @@ func (s *SystemApiApi) SyncApi(c *gin.Context) {
 // @accept    application/json
 // @Produce   application/json
 // @Success   200   {object}  response.Response{msg=string}  "获取API分组"
-// @Router    /api/getApiGroups [get]
+// @Router    /api/getApiGroups [post]
 func (s *SystemApiApi) GetApiGroups(c *gin.Context) {
 	groups, apiGroupMap, err := apiService.GetApiGroups()
 	if err != nil {
@@ -270,8 +270,7 @@ func (s *SystemApiApi) UpdateApi(c *gin.Context) {
 // @Success   200  {object}  response.Response{data=systemRes.SysAPIListResponse,msg=string}  "获取所有的Api 不分页,返回包括api列表"
 // @Router    /api/getAllApis [post]
 func (s *SystemApiApi) GetAllApis(c *gin.Context) {
-	authorityID := utils.GetUserAuthorityId(c)
-	apis, err := apiService.GetAllApis(authorityID)
+	apis, err := apiService.GetAllApis()
 	if err != nil {
 		global.GVA_LOG.Error("获取失败!", zap.Error(err))
 		response.FailWithMessage("获取失败", c)

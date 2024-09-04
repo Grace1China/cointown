@@ -4,13 +4,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	systemRes "github.com/flipped-aurora/gin-vue-admin/server/model/system/response"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/model/common/request"
+	"github.com/Grace1China/cointown/server/model/common/response"
+	"github.com/Grace1China/cointown/server/model/system"
+	systemReq "github.com/Grace1China/cointown/server/model/system/request"
+	systemRes "github.com/Grace1China/cointown/server/model/system/response"
+	"github.com/Grace1China/cointown/server/utils"
 
 	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
@@ -285,8 +285,7 @@ func (b *BaseApi) SetUserAuthorities(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	authorityID := utils.GetUserAuthorityId(c)
-	err = userService.SetUserAuthorities(authorityID, sua.ID, sua.AuthorityIds)
+	err = userService.SetUserAuthorities(sua.ID, sua.AuthorityIds)
 	if err != nil {
 		global.GVA_LOG.Error("修改失败!", zap.Error(err))
 		response.FailWithMessage("修改失败", c)
@@ -351,9 +350,9 @@ func (b *BaseApi) SetUserInfo(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
+
 	if len(user.AuthorityIds) != 0 {
-		authorityID := utils.GetUserAuthorityId(c)
-		err = userService.SetUserAuthorities(authorityID, user.ID, user.AuthorityIds)
+		err = userService.SetUserAuthorities(user.ID, user.AuthorityIds)
 		if err != nil {
 			global.GVA_LOG.Error("设置失败!", zap.Error(err))
 			response.FailWithMessage("设置失败", c)

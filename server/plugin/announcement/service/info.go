@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model"
-	"github.com/flipped-aurora/gin-vue-admin/server/plugin/announcement/model/request"
+	"github.com/Grace1China/cointown/server/global"
+	"github.com/Grace1China/cointown/server/plugin/announcement/model"
+	"github.com/Grace1China/cointown/server/plugin/announcement/model/request"
 )
 
 var Info = new(info)

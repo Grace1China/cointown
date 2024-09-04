@@ -3,15 +3,17 @@ package core
 import (
 	"flag"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/core/internal"
-	"github.com/gin-gonic/gin"
 	"os"
 	"path/filepath"
+
+	"github.com/Grace1China/cointown/server/core/internal"
+	"github.com/gin-gonic/gin"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"github.com/Grace1China/cointown/server/global"
+	_ "github.com/Grace1China/cointown/server/packfile"
 )
 
 // Viper //

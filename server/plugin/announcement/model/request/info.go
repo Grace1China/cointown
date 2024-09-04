@@ -1,8 +1,9 @@
 package request
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
 	"time"
+
+	"github.com/Grace1China/cointown/server/model/common/request"
 )
 
 type InfoSearch struct {

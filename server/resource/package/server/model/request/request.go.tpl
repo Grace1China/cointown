@@ -1,7 +1,7 @@
 package request
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
+	"github.com/Grace1China/cointown/server/model/common/request"
 	{{ if or .HasSearchTimer .GvaModel}}"time"{{ end }}
 )
 
@@ -16,7 +16,7 @@ type {{.StructName}}Search struct{
     Start{{.FieldName}}  *{{.FieldType}}  `json:"start{{.FieldName}}" form:"start{{.FieldName}}"`
     End{{.FieldName}}  *{{.FieldType}}  `json:"end{{.FieldName}}" form:"end{{.FieldName}}"`
         {{- else }}
-            {{- if or (eq .FieldType "enum") (eq .FieldType "picture") (eq .FieldType "pictures") (eq .FieldType "video") (eq .FieldType "richtext") (eq .FieldType "json") }}
+            {{- if or (eq .FieldType "enum") (eq .FieldType "picture") (eq .FieldType "video") (eq .FieldType "richtext") (eq .FieldType "json") }}
             {{.FieldName}}  string `json:"{{.FieldJson}}" form:"{{.FieldJson}}" `
             {{- else if ne .FieldType "string" }}
     {{.FieldName}}  *{{.FieldType}} `json:"{{.FieldJson}}" form:"{{.FieldJson}}" `

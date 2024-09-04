@@ -1,8 +1,9 @@
 package ast
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"path/filepath"
+
+	"github.com/Grace1China/cointown/server/global"
 )
 
 func init() {

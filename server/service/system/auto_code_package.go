@@ -3,19 +3,20 @@ package system
 import (
 	"context"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	common "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils/ast"
-	"github.com/pkg/errors"
 	"go/token"
-	"gorm.io/gorm"
 	"os"
 	"path/filepath"
 	"strings"
 	"text/template"
+
+	"github.com/Grace1China/cointown/server/global"
+	common "github.com/Grace1China/cointown/server/model/common/request"
+	model "github.com/Grace1China/cointown/server/model/system"
+	"github.com/Grace1China/cointown/server/model/system/request"
+	"github.com/Grace1China/cointown/server/utils"
+	"github.com/Grace1China/cointown/server/utils/ast"
+	"github.com/pkg/errors"
+	"gorm.io/gorm"
 )
 
 var AutoCodePackage = new(autoCodePackage)

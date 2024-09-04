@@ -1,7 +1,7 @@
 package system
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
+	"github.com/Grace1China/cointown/server/middleware"
 	"github.com/gin-gonic/gin"
 )
 

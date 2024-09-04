@@ -1,7 +1,6 @@
 package ast
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"go/ast"
 	"go/parser"
 	"go/printer"
@@ -9,6 +8,8 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/Grace1China/cointown/server/global"
 )
 
 func TestAst(t *testing.T) {

@@ -2,11 +2,12 @@ package initialize
 
 import (
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/task"
+
+	"github.com/Grace1China/cointown/server/task"
 
 	"github.com/robfig/cron/v3"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
+	"github.com/Grace1China/cointown/server/global"
 )
 
 func Timer() {
@@ -26,12 +27,16 @@ func Timer() {
 
 		// 其他定时任务定在这里 参考上方使用方法
 
-		//_, err := global.GVA_Timer.AddTaskByFunc("定时任务标识", "corn表达式", func() {
-		//	具体执行内容...
-		//  ......
-		//}, option...)
-		//if err != nil {
-		//	fmt.Println("add timer error:", err)
-		//}
+		_, err1 := global.GVA_Timer.AddTaskByFunc("get Price", "0 */2 * * * *", func() {
+			fmt.Println("go 1 min call GetPrice()")
+			err := task.GetPrice() // 定时任务方法定在task文件包中
+			if err != nil {
+				fmt.Println("timer error:", err)
+			}
+
+		}, "go 1 min", option...)
+		if err1 != nil {
+			fmt.Println("add timer error:", err1)
+		}
 	}()
 }
