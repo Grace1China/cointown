@@ -5,6 +5,7 @@ import (
 	"github.com/Grace1China/cointown/server/global"
 	"github.com/Grace1China/cointown/server/initialize/internal"
 	_ "github.com/go-sql-driver/mysql"
+	"go.uber.org/zap"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -14,6 +15,7 @@ import (
 // Author [SliverHorn](https://github.com/SliverHorn)
 func GormMysql() *gorm.DB {
 	m := global.GVA_CONFIG.Mysql
+	global.GVA_LOG.Info("MYSQL", zap.Any("mysql", m))
 	if m.Dbname == "" {
 		return nil
 	}

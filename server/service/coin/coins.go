@@ -7,6 +7,7 @@ import (
 	"github.com/Grace1China/cointown/server/global"
 	"github.com/Grace1China/cointown/server/model/coin"
 	coinReq "github.com/Grace1China/cointown/server/model/coin/request"
+	"go.uber.org/zap"
 )
 
 type CoinsService struct{}
@@ -29,6 +30,15 @@ func (coinsService *CoinsService) DeleteCoins(ID string) (err error) {
 // Author [piexlmax](https://github.com/piexlmax)
 func (coinsService *CoinsService) DeleteCoinsByIds(IDs []string) (err error) {
 	err = global.GVA_DB.Delete(&[]coin.Coins{}, "id in ?", IDs).Error
+	return err
+}
+
+// DeleteCoinsByIds 批量删除币记录
+// Author [piexlmax](https://github.com/piexlmax)
+func (coinsService *CoinsService) DeleteCoinsByDay(day int) (err error) {
+	global.GVA_LOG.Info("DeleteCoinsByDay", zap.Any("day", day))
+	sevenDaysAgo := time.Now().AddDate(0, 0, 0-day)
+	err = global.GVA_DB.Delete(&[]coin.Coins{}, "created_at < ?", sevenDaysAgo).Error
 	return err
 }
 
@@ -72,6 +82,7 @@ func (coinsService *CoinsService) GetCoinsInfoList(info coinReq.CoinsSearch) (li
 	offset := info.PageSize * (info.Page - 1)
 	// 创建db
 	db := global.GVA_DB.Model(&coin.Coins{})
+	db.Where("deleted_at IS NULL")
 	var coinss []coin.Coins
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if info.StartCreatedAt != nil && info.EndCreatedAt != nil {

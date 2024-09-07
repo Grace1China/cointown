@@ -49,6 +49,22 @@ export const deleteCoinsByIds = (params) => {
 }
 
 // @Tags Coins
+// @Summary 批量删除币
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Param data body request.IdsReq true "批量删除币"
+// @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
+// @Router /coins/deleteCoins [delete]
+export const deleteCoinsByDay = (params) => {
+  return service({
+    url: '/coins/deleteCoinsByDay',
+    method: 'delete',
+    params
+  })
+}
+
+// @Tags Coins
 // @Summary 更新币
 // @Security ApiKeyAuth
 // @accept application/json

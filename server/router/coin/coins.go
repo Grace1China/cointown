@@ -14,6 +14,7 @@ func (s *CoinsRouter) InitCoinsRouter(Router *gin.RouterGroup, PublicRouter *gin
 	coinsRouterWithoutAuth := PublicRouter.Group("coins")
 	{
 		// coinsRouter.POST("createCoins", coinsApi.CreateCoins)   // 新建币
+		coinsRouter.DELETE("deleteCoinsByDay", coinsApi.DeleteCoinsByDay) // 批量删除币
 		coinsRouter.DELETE("deleteCoins", coinsApi.DeleteCoins)           // 删除币
 		coinsRouter.DELETE("deleteCoinsByIds", coinsApi.DeleteCoinsByIds) // 批量删除币
 		coinsRouter.PUT("updateCoins", coinsApi.UpdateCoins)              // 更新币

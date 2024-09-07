@@ -363,8 +363,19 @@ onBeforeMount(async () => {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
       type: 'warning'
-    }).then(() => {
-      deleteRawMsg7D()
+    }).then(async  () => {
+      const res =  await deleteRawMsg7D()
+      console.log('onDelete7',res)
+      if(res.code==0){
+        ElMessage({
+          type: 'success',
+          message: '删除成功'
+        })
+        if (tableData.value.length === IDs.length && page.value > 1) {
+          page.value--
+        }
+        getTableData()
+      }
     })
   }
 
@@ -447,19 +458,19 @@ onBeforeMount(async () => {
     }
   }
 
-  const deleteRawMsgFunc7D = async () => {
-    const res = await deleteRawMsg7D()
-    if (res.code === 0) {
-      ElMessage({
-        type: 'success',
-        message: '删除成功'
-      })
-      // if (tableData.value.length === 1 && page.value > 1) {
-      //   page.value--
-      // }
-      getTableData()
-    }
-  }
+  // const deleteRawMsgFunc7D = async () => {
+  //   const res = await deleteRawMsg7D()
+  //   if (res.code === 0) {
+  //     ElMessage({
+  //       type: 'success',
+  //       message: '删除成功'
+  //     })
+  //     // if (tableData.value.length === 1 && page.value > 1) {
+  //     //   page.value--
+  //     // }
+  //     getTableData()
+  //   }
+  // }
 
   const onUpdateRawMsgStatusAll = async () => {
     const res = await UpdateRawMsgStatusAll()

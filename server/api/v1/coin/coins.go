@@ -1,6 +1,8 @@
 package coin
 
 import (
+	"strconv"
+
 	"github.com/Grace1China/cointown/server/global"
 	"github.com/Grace1China/cointown/server/model/coin"
 	coinReq "github.com/Grace1China/cointown/server/model/coin/request"
@@ -67,6 +69,31 @@ func (coinsApi *CoinsApi) DeleteCoins(c *gin.Context) {
 func (coinsApi *CoinsApi) DeleteCoinsByIds(c *gin.Context) {
 	IDs := c.QueryArray("IDs[]")
 	err := coinsService.DeleteCoinsByIds(IDs)
+	if err != nil {
+		global.GVA_LOG.Error("批量删除失败!", zap.Error(err))
+		response.FailWithMessage("批量删除失败:"+err.Error(), c)
+		return
+	}
+	response.OkWithMessage("批量删除成功", c)
+}
+
+// DeleteCoinsByIds 批量删除币
+// @Tags Coins
+// @Summary 批量删除币
+// @Security ApiKeyAuth
+// @accept application/json
+// @Produce application/json
+// @Success 200 {object} response.Response{msg=string} "批量删除成功"
+// @Router /coins/deleteCoinsByIds [delete]
+func (coinsApi *CoinsApi) DeleteCoinsByDay(c *gin.Context) {
+	day := c.Query("day")
+	day1, err := strconv.Atoi(day)
+	if err != nil {
+		global.GVA_LOG.Error("参数day,不是数字，批量删除失败!", zap.Error(err))
+		response.FailWithMessage("参数day,不是数字，批量删除失败!:"+err.Error(), c)
+		return
+	}
+	err = coinsService.DeleteCoinsByDay(day1)
 	if err != nil {
 		global.GVA_LOG.Error("批量删除失败!", zap.Error(err))
 		response.FailWithMessage("批量删除失败:"+err.Error(), c)
